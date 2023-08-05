@@ -1,13 +1,13 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "panama city beach flags",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
           "samples": [
-            "quit",
-            "cancel"
+            "exit",
+            "cancel",
+            "quit"
           ]
         },
         {
@@ -17,8 +17,16 @@
         {
           "name": "AMAZON.StopIntent",
           "samples": [
-            "no",
-            "stop"
+            "no"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "LearnMoreIntent",
+          "samples": [
+            "yes",
+            "learn more",
+            "tell me more"
           ]
         },
         {
@@ -30,26 +38,19 @@
           "samples": []
         },
         {
-          "name": "LearnMoreIntent",
           "slots": [],
-          "samples": [
-            "tell me more",
-            "learn more",
-            "yes"
-          ]
-        },
-        {
           "name": "StartOverIntent",
-          "slots": [],
           "samples": [
-            "panama city beach safety flags status",
+            "say that again",
+            "repeat",
             "flag status",
-            "panama city beach flags status"
+            "south walton beach flags status",
+            "south walton beach safety flags status"
           ]
         }
       ],
-      "types": []
+      "types": [],
+      "invocationName": "south walton beach flags"
     }
-  },
-  "version": "9"
+  }
 }
