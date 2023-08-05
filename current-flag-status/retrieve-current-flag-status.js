@@ -13,7 +13,7 @@ async function getFlagDescription(url) {
       // Get the data from the response
       var data = response.data;
       const dom = new JSDOM(response.data);
-      const flagStatusText = dom.window.document.querySelector('.flag-description').textContent;
+      const flagStatusText = dom.window.document.querySelector('.flag-status').textContent;
       // Check if the element exists
       if (flagStatusText) {
         // Return the text
@@ -33,7 +33,7 @@ async function getFlagDescription(url) {
 // Define an async function that calls getFlagDescription and prints the result
 async function main() {
   // Call getFlagDescription with the URL and await for the promise to resolve
-  var url = "https://www.visitpanamacitybeach.com/beach-alerts-iframe/";
+  var url = "https://www.swfd.org/";
   var result = await getFlagDescription(url);
   // Print the result
   console.log("The flag status text is: " + result);

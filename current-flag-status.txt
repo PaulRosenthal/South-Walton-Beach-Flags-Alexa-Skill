@@ -1,6 +1,7 @@
 
-			Yellow Flag
-			
-			
-			
-		
+            
+                Current surf conditions are 
+                yellow
+                and purple. Click here to learn more.
+            
+        

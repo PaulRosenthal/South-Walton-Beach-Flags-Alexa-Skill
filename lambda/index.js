@@ -35,7 +35,7 @@ const LaunchRequestHandler = {
     },
     async handle(handlerInput) {
         
-        var speakOutput = 'There was an error retrieving the Panama City Beach flag' +
+        var speakOutput = 'There was an error retrieving the South Walton Beach flag' +
         ' status. Please try again soon. Say "Cancel" to exit.';
         
         try {
@@ -50,14 +50,14 @@ const LaunchRequestHandler = {
         
         var detailed_flag_description = await getDetailedFlagDescription(flag_description);
         
-        speakOutput = 'The flag status in Panama City Beach is currently ' + detailed_flag_description +
+        speakOutput = 'The flag status in South Walton is currently ' + detailed_flag_description +
         '. Would you like to learn more?';
         }
         
         catch (err) {
             console.log('Error encountered: ' + err);
             speakOutput = 'Unfortunately, an error was encountered when trying to '
-            + 'retrieve the Panama City Beach flag status. Please try again soon.';
+            + 'retrieve the South Walton beach flag status. Please try again soon.';
         }
 
         return handlerInput.responseBuilder
@@ -95,7 +95,7 @@ const HelpIntentHandler = {
     },
     handle(handlerInput) {
         const speakOutput = "When prompted, you can say yes to learn more about the beach flags. "
-        + " Try asking Alexa to open Panama City Beach Flags again.";
+        + " Try asking Alexa to open South Walton Beach Flags again.";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
