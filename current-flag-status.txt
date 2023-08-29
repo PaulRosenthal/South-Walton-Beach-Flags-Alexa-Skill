@@ -1,7 +1,7 @@
 
             
                 Current surf conditions are 
-                yellow
-                and purple. Click here to learn more.
+                red
+                . Click here to learn more.
             
         
