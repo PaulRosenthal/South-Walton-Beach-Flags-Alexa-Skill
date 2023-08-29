@@ -1,7 +1,7 @@
 
             
                 Current surf conditions are 
-                red
+                double red
                 . Click here to learn more.
             
         
