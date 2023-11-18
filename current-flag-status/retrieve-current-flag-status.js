@@ -1,4 +1,3 @@
-// Import the axios module
 var axios = require('axios');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
@@ -13,14 +12,25 @@ async function getFlagDescription(url) {
       // Get the data from the response
       var data = response.data;
       const dom = new JSDOM(response.data);
-      const flagStatusText = dom.window.document.querySelector('.flag-status').textContent;
-      // Check if the element exists
-      if (flagStatusText) {
-        // Return the text
-        return flagStatusText;
-      } else {
+      try {
+        const flagStatusText = dom.window.document.querySelector('.flag-status').textContent;
+        // Check if the element exists
+        if (flagStatusText) {
+          // Extract the color or colors from the flag status text
+          const colors = flagStatusText.match(/(green|yellow|red|double red|purple)/gi);
+          // Join the colors into a single string separated by the word "and"
+          const colorsString = colors.join(", ").replace(/, ([^,]*)$/, ' and $1');
+          // Add text to the beginning of the string that prefaces the status
+          const finalString = "The beach safety flags in Walton County are " + colorsString + ".";
+          // Return the color or colors as a string
+          return finalString;
+        } else {
+          // Throw an error
+          throw new Error("No flag description found in the flag status text that was retrieved.");
+        }
+      } catch {
         // Throw an error
-        throw new Error("No flag description found");
+        throw new Error("The script couldn't retrieve the flag status text.");
       }
     })
     // Define a callback function that runs when the request is rejected
@@ -36,7 +46,7 @@ async function main() {
   var url = "https://www.swfd.org/";
   var result = await getFlagDescription(url);
   // Print the result
-  console.log("The flag status text is: " + result);
+  console.log(result);
 
   fs.writeFile(__dirname + '/../current-flag-status.txt', result, (err) => {
     if (err) {
