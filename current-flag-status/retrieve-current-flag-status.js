@@ -3,11 +3,21 @@ const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 const fs = require('fs');
 
-
-// Define an async function that takes a URL as an argument and returns a promise
 async function getFlagDescription(url) {
+  const currentDate = new Date();
+
+  // Define the cutoff date
+  const cutoffDate = new Date('2025-08-15');
+
+  // Configure axios to ignore SSL issues if before cutoff date
+  const axiosConfig = {
+    httpsAgent: new (require('https').Agent)({
+      rejectUnauthorized: currentDate > cutoffDate // Only validate certificates after cutoff date
+    })
+  };
+
   // Use axios to send a GET request to the URL
-  return axios.get(url)
+  return axios.get(url, axiosConfig)
     .then(function(response) {
       // Get the data from the response
       var data = response.data;
